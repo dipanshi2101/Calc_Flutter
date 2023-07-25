@@ -23,7 +23,7 @@ class _CalcAppState extends State<CalcApp> {
   var operation = '';
   final List<String> _history = [];
 
-  onButtuonClick(value) {
+  onButtonClick(value) {
     //print(value);
     if (value == "AC") {
       input = '';
@@ -127,6 +127,7 @@ class _CalcAppState extends State<CalcApp> {
                       ),
                       Text(
                         output,
+                        key: const Key('output'),
                         style: TextStyle(
                           fontSize: 25,
                           color: Colors.white.withOpacity(0.7),
@@ -136,51 +137,60 @@ class _CalcAppState extends State<CalcApp> {
               ),
             ),
           ),
+
           //buttons
-
-          Row(
-            children: [
-              button(text: "AC", buttonBgColor: opnColor, tcolor: orange),
-              buttonDel(text: "<-", buttonBgColor: opnColor, tcolor: orange),
-              button(text: "", buttonBgColor: Colors.transparent),
-              button(text: "/", buttonBgColor: opnColor, tcolor: orange),
-            ],
+          Expanded(
+            child: Row(
+              children: [
+                button(text: "AC", buttonBgColor: opnColor, tcolor: orange),
+                buttonDel(text: "<-", buttonBgColor: opnColor, tcolor: orange),
+                button(text: "", buttonBgColor: Colors.transparent),
+                button(text: "/", buttonBgColor: opnColor, tcolor: orange),
+              ],
+            ),
           ),
-          Row(
-            children: [
-              button(text: "7"),
-              button(text: "8"),
-              button(text: "9"),
-              button(text: "*", buttonBgColor: opnColor, tcolor: orange),
-            ],
+          Expanded(
+            child: Row(
+              children: [
+                button(text: "7"),
+                button(text: "8"),
+                button(text: "9"),
+                button(text: "*", buttonBgColor: opnColor, tcolor: orange),
+              ],
+            ),
           ),
-
-          Row(
-            children: [
-              button(text: "4"),
-              button(text: "5"),
-              button(text: "6"),
-              button(text: "-", buttonBgColor: opnColor, tcolor: orange),
-            ],
-          ),
-
-          Row(
-            children: [
-              button(text: "1"),
-              button(text: "2"),
-              button(text: "3"),
-              button(text: "+", tcolor: orange, buttonBgColor: opnColor),
-            ],
+          Expanded(
+            child: Row(
+              children: [
+                button(text: "4"),
+                button(text: "5"),
+                button(text: "6"),
+                button(text: "-", buttonBgColor: opnColor, tcolor: orange),
+              ],
+            ),
           ),
 
-          Row(
-            children: [
-              button(text: "%", buttonBgColor: opnColor, tcolor: orange),
-              button(text: "0", buttonBgColor: opnColor, tcolor: orange),
-              button(text: ".", buttonBgColor: opnColor, tcolor: orange),
-              button(text: "=", buttonBgColor: orange),
-            ],
+          Expanded(
+            child: Row(
+              children: [
+                button(text: "1"),
+                button(text: "2"),
+                button(text: "3"),
+                button(text: "+", tcolor: orange, buttonBgColor: opnColor),
+              ],
+            ),
           ),
+
+          Expanded(
+            child: Row(
+              children: [
+                button(text: "%", buttonBgColor: opnColor, tcolor: orange),
+                button(text: "0", buttonBgColor: opnColor, tcolor: orange),
+                button(text: ".", buttonBgColor: opnColor, tcolor: orange),
+                button(text: "=", buttonBgColor: orange),
+              ],
+            ),
+          )
         ],
       ),
     );
@@ -199,7 +209,7 @@ class _CalcAppState extends State<CalcApp> {
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
-            onPressed: () => onButtuonClick(text),
+            onPressed: () => onButtonClick(text),
             onLongPress: () => onLongPress(),
             child: Text(
               text,
@@ -227,7 +237,7 @@ class _CalcAppState extends State<CalcApp> {
               borderRadius: BorderRadius.circular(12),
             ),
           ),
-          onPressed: () => onButtuonClick(text),
+          onPressed: () => onButtonClick(text),
           child: Text(
             text,
             style: TextStyle(
